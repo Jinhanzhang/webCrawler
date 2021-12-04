@@ -15,6 +15,7 @@ class SitemapSpider(SitemapSpider):
         item['name'] = response.xpath("//h1[contains(@class,'headline') and contains(@class,'heading-content')]/text()").get()
         ingredients = response.xpath("//input[@data-tracking-label='ingredient clicked']")
         ingredients_obj = []
+        ingredients_list = ''
         for ingredient in ingredients:
             ingredient_obj = {
                 'name': ingredient.xpath(".//@data-ingredient").get(),
@@ -22,7 +23,9 @@ class SitemapSpider(SitemapSpider):
                 'unit': ingredient.xpath(".//@data-unit").get(),
             }
             ingredients_obj.append(ingredient_obj)
+            ingredients_list = ingredients_list + ingredients_obj.name + ','
         item['ingredients'] = ingredients_obj
+        item['ingredients_list'] = ingredients_list
         item['description'] = response.xpath("//li[contains(@class,'instructions-section-item')]//div//p/text()").getall()
         item['img_url'] = response.xpath("//div[contains(@class,'primary-media-with-filmstrip')]//div//noscript//img/@src").get(0)
         item['label'] = response.xpath("//li[@class='breadcrumbs__item'][3]//a/span/text()").get()
