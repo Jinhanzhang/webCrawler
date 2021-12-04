@@ -4,4 +4,4 @@
 
 sample queries:\
 db.Scrapy_labeledrecipes.find({})\
-db.Scrapy_labeledrecipes.find({"name":"Maple-Glazed Salmon with Pineapple"})\
+db.Scrapy_labeledrecipes.find({"name":"Maple-Glazed Salmon with Pineapple"})
