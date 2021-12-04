@@ -23,7 +23,7 @@ class SitemapSpider(SitemapSpider):
                 'unit': ingredient.xpath(".//@data-unit").get(),
             }
             ingredients_obj.append(ingredient_obj)
-            ingredients_list = ingredients_list + ingredients_obj.name + ','
+            ingredients_list = ingredients_list + ingredient_obj['name'] + ','
         item['ingredients'] = ingredients_obj
         item['ingredients_list'] = ingredients_list
         item['description'] = response.xpath("//li[contains(@class,'instructions-section-item')]//div//p/text()").getall()
